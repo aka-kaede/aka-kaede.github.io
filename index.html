@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>Kaede Polkinghorne - Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -14,95 +14,11 @@
         body {
             font-family: Georgia, serif;
             font-size: 16px;
-            line-height: 1.6;
+            line-height: 1;
             color: #333;
-        }
-
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 250px;
-            height: 100vh;
-            background: #fff;
-            padding: 2rem 1.5rem;
-            overflow-y: auto;
-            border-right: 1px solid #ddd;
-        }
-
-        .sidebar h1 {
-            color: #333;
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 2rem;
-            cursor: pointer;
-        }
-
-        .sidebar nav a {
-            display: block;
-            color: #333;
-            text-decoration: none;
-            padding: 0.75rem 1rem;
-            margin-bottom: 0.5rem;
-            border-radius: 4px;
-            transition: background 0.3s;
-        }
-
-        .sidebar nav a:hover {
-            background: #f5f5f5;
-        }
-
-        .dropdown {
-            margin-bottom: 0.5rem;
-        }
-
-        .dropdown-toggle {
-            display: block;
-            color: #333;
-            text-decoration: none;
-            padding: 0.75rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s;
-            position: relative;
-        }
-
-        .dropdown-toggle:hover {
-            background: #f5f5f5;
-        }
-
-        .dropdown-toggle::after {
-            content: '▼';
-            position: absolute;
-            right: 1rem;
-            font-size: 0.7rem;
-            transition: transform 0.3s;
-        }
-
-        .dropdown-toggle.active::after {
-            transform: rotate(180deg);
-        }
-
-        .dropdown-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            padding-left: 1rem;
-        }
-
-        .dropdown-content.show {
-            max-height: 500px;
-        }
-
-        .dropdown-content a {
-            font-size: 0.9rem;
-            padding: 0.5rem 1rem;
-        }
-
-        .main-content {
-            margin-left: 250px;
-            padding: 3rem;
-            max-width: 900px;
+            padding: 3rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .page {
@@ -113,29 +29,108 @@
             display: block;
         }
 
-        h2 {
-            color: #333;
-            margin-bottom: 1.5rem;
+        h1 {
             font-size: 16px;
             font-weight: bold;
+            margin-bottom: 1rem;
         }
 
-        h3 {
-            color: #333;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
+        .page-title {
             font-size: 16px;
             font-weight: bold;
+            margin-bottom: 0.5rem;
         }
 
         .bio {
+            margin-bottom: 1rem;
+        }
+
+        .bio p:last-child {
+            margin-bottom: 0;
+        }
+
+        .nav-links {
+            margin-top: 1rem;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            margin-right: 1.5rem;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown {
+            display: inline-block;
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: Georgia, serif;
             font-size: 16px;
-            line-height: 1.8;
-            margin-bottom: 2rem;
+            padding: 0;
+        }
+
+        .dropdown-toggle::after {
+            content: ' ▶';
+            font-size: 0.7em;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .dropdown-toggle.open::after {
+            transform: rotate(90deg);
+        }
+
+        .dropdown-toggle:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: #fff;
+            padding: 0;
+            margin-top: 0;
+            min-width: 200px;
+            z-index: 1;
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0;
+            margin: 0;
+            color: #333;
+            text-decoration: none;
+            line-height: 1;
+        }
+
+        .dropdown-content a:hover {
+            background: none;
+            text-decoration: underline;
         }
 
         .cv-section {
             margin-bottom: 2.5rem;
+        }
+
+        .cv-section h3 {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 1rem;
         }
 
         .cv-item {
@@ -143,9 +138,9 @@
         }
 
         .cv-item h4 {
-            color: #333;
-            margin-bottom: 0.25rem;
             font-size: 16px;
+            font-weight: normal;
+            margin-bottom: 0.25rem;
         }
 
         .cv-item .date {
@@ -160,118 +155,126 @@
         }
 
         @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-
-            .main-content {
-                margin-left: 0;
+            body {
                 padding: 2rem 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <aside class="sidebar">
-        <h1 onclick="showPage('home')">Your Name</h1>
-        <nav>
-            <a href="#" onclick="showPage('cv'); return false;">CV</a>
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <h1>Kaede Polkinghorne</h1>
+        <div class="bio">
+            <p>Hello! I'm Kaede (she/they), a multidisciplinary designer presently thinking about blood and public history. With professional experience in participatory design, landscape architecture, and public sector planning across the gulf south, my research focuses on how stories take shape and are remembered along our third coast.</p>
+            <p>I am currently pursuing a Masters in City Planning at MIT's Department of Urban Studies and Planning.</p>
+        </div>
+        
+        <div class="nav-links">
+            <div><a href="#" onclick="showPage('cv'); return false;">Curriculum Vitae</a></div>
             <div class="dropdown">
-                <div class="dropdown-toggle" onclick="toggleDropdown()">Project Archive</div>
+                <button class="dropdown-toggle" onclick="toggleDropdown()">Project Archive</button>
                 <div class="dropdown-content" id="projectDropdown">
-                    <a href="#" onclick="showPage('project1'); return false;">Project One</a>
-                    <a href="#" onclick="showPage('project2'); return false;">Project Two</a>
-                    <a href="#" onclick="showPage('project3'); return false;">Project Three</a>
+                    <a href="#" onclick="showPage('project1'); closeDropdown(); return false;">Project One</a>
+                    <a href="#" onclick="showPage('project2'); closeDropdown(); return false;">Project Two</a>
+                    <a href="#" onclick="showPage('project3'); closeDropdown(); return false;">Project Three</a>
                 </div>
-            </div>
-        </nav>
-    </aside>
-
-    <main class="main-content">
-        <!-- HOME PAGE -->
-        <div id="home" class="page active">
-            <h2>Welcome</h2>
-            <div class="bio">
-                <p>Hello! I'm [Your Name], a [your profession/role] based in [location].</p>
-                <p>I specialize in [your specialties/interests]. With a background in [brief background], I'm passionate about [what drives you professionally].</p>
-                <p>[Add another paragraph about your interests, approach to work, or what you're currently focused on.]</p>
             </div>
         </div>
+    </div>
 
-        <!-- CV PAGE -->
-        <div id="cv" class="page">
-            
-            <div class="cv-section">
-                <h3>Education</h3>
-                <div class="cv-item">
-                    <h4>Degree Name - Institution Name</h4>
-                    <div class="date">Year - Year</div>
-                    <p>Brief description of your studies, focus areas, or achievements.</p>
-                </div>
-                <div class="cv-item">
-                    <h4>Degree Name - Institution Name</h4>
-                    <div class="date">Year - Year</div>
-                    <p>Brief description of your studies, focus areas, or achievements.</p>
-                </div>
+    <!-- CV PAGE -->
+    <div id="cv" class="page">
+        <h1><a href="#" onclick="showPage('home'); return false;" style="color: #333; text-decoration: none;">Kaede Polkinghorne</a></h1>
+        
+        <div class="cv-section">
+            <h3>Education</h3>
+            <div class="cv-item">
+                <h4>Degree Name - Institution Name</h4>
+                <div class="date">Year - Year</div>
+                <p>Brief description of your studies, focus areas, or achievements.</p>
             </div>
-
-            <div class="cv-section">
-                <h3>Experience</h3>
-                <div class="cv-item">
-                    <h4>Job Title - Company Name</h4>
-                    <div class="date">Month Year - Present</div>
-                    <p>Description of your role, responsibilities, and key achievements.</p>
-                </div>
-                <div class="cv-item">
-                    <h4>Job Title - Company Name</h4>
-                    <div class="date">Month Year - Month Year</div>
-                    <p>Description of your role, responsibilities, and key achievements.</p>
-                </div>
-            </div>
-
-            <div class="cv-section">
-                <h3>Skills</h3>
-                <p>List your key skills, technical proficiencies, languages, etc.</p>
+            <div class="cv-item">
+                <h4>Degree Name - Institution Name</h4>
+                <div class="date">Year - Year</div>
+                <p>Brief description of your studies, focus areas, or achievements.</p>
             </div>
         </div>
 
-        <!-- PROJECT PAGES -->
-        <div id="project1" class="page">
-            <h2>Project One</h2>
-            <div class="project-meta">Year • Type of project</div>
-            <p>Describe your first project. What was the goal? What did you do? What were the results?</p>
-            <p>Add more details, images, links, or anything else relevant to showcase this project.</p>
+        <div class="cv-section">
+            <h3>Experience</h3>
+            <div class="cv-item">
+                <h4>Job Title - Company Name</h4>
+                <div class="date">Month Year - Present</div>
+                <p>Description of your role, responsibilities, and key achievements.</p>
+            </div>
+            <div class="cv-item">
+                <h4>Job Title - Company Name</h4>
+                <div class="date">Month Year - Month Year</div>
+                <p>Description of your role, responsibilities, and key achievements.</p>
+            </div>
         </div>
 
-        <div id="project2" class="page">
-            <h2>Project Two</h2>
-            <div class="project-meta">Year • Type of project</div>
-            <p>Describe your second project. What was the goal? What did you do? What were the results?</p>
-            <p>Add more details, images, links, or anything else relevant to showcase this project.</p>
+        <div class="cv-section">
+            <h3>Skills</h3>
+            <p>List your key skills, technical proficiencies, languages, etc.</p>
         </div>
+    </div>
 
-        <div id="project3" class="page">
-            <h2>Project Three</h2>
-            <div class="project-meta">Year • Type of project</div>
-            <p>Describe your third project. What was the goal? What did you do? What were the results?</p>
-            <p>Add more details, images, links, or anything else relevant to showcase this project.</p>
-        </div>
-    </main>
+    <!-- PROJECT PAGES -->
+    <div id="project1" class="page">
+        <h1><a href="#" onclick="showPage('home'); return false;" style="color: #333; text-decoration: none;">Kaede Polkinghorne</a></h1>
+        <div class="project-meta">Year • Type of project</div>
+        <p>Describe your first project. What was the goal? What did you do? What were the results?</p>
+        <p>Add more details, images, links, or anything else relevant to showcase this project.</p>
+    </div>
+
+    <div id="project2" class="page">
+        <h1><a href="#" onclick="showPage('home'); return false;" style="color: #333; text-decoration: none;">Kaede Polkinghorne</a></h1>
+        <div class="project-meta">Year • Type of project</div>
+        <p>Describe your second project. What was the goal? What did you do? What were the results?</p>
+        <p>Add more details, images, links, or anything else relevant to showcase this project.</p>
+    </div>
+
+    <div id="project3" class="page">
+        <h1><a href="#" onclick="showPage('home'); return false;" style="color: #333; text-decoration: none;">Kaede Polkinghorne</a></h1>
+        <div class="project-meta">Year • Type of project</div>
+        <p>Describe your third project. What was the goal? What did you do? What were the results?</p>
+        <p>Add more details, images, links, or anything else relevant to showcase this project.</p>
+    </div>
 
     <script>
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
         }
 
         function toggleDropdown() {
             const dropdown = document.getElementById('projectDropdown');
             const toggle = document.querySelector('.dropdown-toggle');
             dropdown.classList.toggle('show');
-            toggle.classList.toggle('active');
+            toggle.classList.toggle('open');
+        }
+
+        function closeDropdown() {
+            const dropdown = document.getElementById('projectDropdown');
+            const toggle = document.querySelector('.dropdown-toggle');
+            dropdown.classList.remove('show');
+            toggle.classList.remove('open');
+        }
+
+        // Close dropdown when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropdown-toggle')) {
+                const dropdown = document.getElementById('projectDropdown');
+                const toggle = document.querySelector('.dropdown-toggle');
+                if (dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                    toggle.classList.remove('open');
+                }
+            }
         }
     </script>
 </body>
